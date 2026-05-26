@@ -1,98 +1,248 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>OXYGÈNE — Santé & Performance</title>
+export default function FunctionalBreathingSite() { return ( <div className="min-h-screen bg-white text-gray-900"> {/* Hero */} <section className="bg-gradient-to-br from-sky-100 to-white py-24 px-6"> <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center"> <div> <p className="uppercase tracking-[0.3em] text-sky-700 font-semibold mb-4"> OXYGÈNE </p>
 
-  <style>
-    body{
-      margin:0;
-      font-family:Arial,sans-serif;
-      background:#f5fbff;
-      color:#111;
-      text-align:center;
-    }
+<h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
+          La respiration change tout.<br />Retrouvez votre énergie.
+        </h1>
 
-    header{
-      padding:100px 20px;
-      background:linear-gradient(to bottom right,#dff6ff,#ffffff);
-    }
+        <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+          Respiration • Posture • Mental • Nutrition. Un accompagnement personnalisé pour retrouver un corps aligné, une respiration efficace et un mental apaisé.
+        </p>
 
-    h1{
-      font-size:60px;
-      margin-bottom:20px;
-    }
+        <div className="flex flex-wrap gap-4">
+          <a
+            href="#reservation"
+            className="bg-sky-600 hover:bg-sky-700 transition text-white px-6 py-3 rounded-2xl font-semibold shadow-lg"
+          >
+            Réserver une séance
+          </a>
 
-    p{
-      font-size:20px;
-      max-width:700px;
-      margin:auto;
-      line-height:1.6;
-    }
+          <a
+            href="#services"
+            className="border border-gray-300 hover:border-sky-600 hover:text-sky-600 transition px-6 py-3 rounded-2xl font-semibold"
+          >
+            Découvrir les services
+          </a>
+        </div>
+      </div>
 
-    .btn{
-      display:inline-block;
-      margin-top:40px;
-      padding:18px 36px;
-      background:#00a6d6;
-      color:white;
-      text-decoration:none;
-      border-radius:16px;
-      font-size:18px;
-      font-weight:bold;
-    }
+      <div>
+        <img
+          src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200&auto=format&fit=crop"
+          alt="Respiration et bien-être"
+          className="rounded-3xl shadow-2xl object-cover h-[500px] w-full"
+        />
+      </div>
+    </div>
+  </section>
 
-    section{
-      padding:80px 20px;
-    }
+  {/* About */}
+  <section className="py-24 px-6">
+    <div className="max-w-5xl mx-auto text-center">
+      <h2 className="text-4xl font-bold mb-6">
+        Une approche centrée sur le souffle
+      </h2>
 
-    .card{
-      background:white;
-      max-width:900px;
-      margin:30px auto;
-      padding:40px;
-      border-radius:24px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.08);
-    }
-  </style>
-</head>
+      <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+        La respiration fonctionnelle permet de retrouver un équilibre
+        physiologique durable grâce à des techniques adaptées à votre mode
+        de vie, votre niveau d’activité et vos objectifs personnels.
+      </p>
+    </div>
+  </section>
 
-<body>
+  {/* Services */}
+  <section id="services" className="bg-gray-50 py-24 px-6">
+    <div className="max-w-6xl mx-auto">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl font-bold mb-4">Services</h2>
+        <p className="text-gray-600 text-lg">
+          Des accompagnements personnalisés adaptés à vos besoins.
+        </p>
+      </div>
 
-<header>
-  <h1>OXYGÈNE</h1>
+      <div className="grid md:grid-cols-3 gap-8">
+        {[
+          {
+            title: 'Respiration fonctionnelle',
+            desc: 'Évaluation complète de votre respiration et protocole personnalisé.',
+          },
+          {
+            title: 'Posture & alignement',
+            desc: 'Techniques respiratoires pour réduire l’anxiété et améliorer le sommeil.',
+          },
+          {
+            title: 'Gestion du stress',
+            desc: 'Optimisez votre souffle, votre posture et votre récupération pour atteindre vos objectifs.',
+          },
+        ].map((service, index) => (
+          <div
+            key={index}
+            className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition"
+          >
+            <h3 className="text-2xl font-semibold mb-4">
+              {service.title}
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              {service.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-  <p>
-    Respiration • Posture • Mental • Nutrition
-  </p>
+  {/* Benefits */}
+  <section className="py-24 px-6">
+    <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <img
+        src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=1200&auto=format&fit=crop"
+        alt="Bien-être respiration"
+        className="rounded-3xl shadow-xl h-[500px] object-cover w-full"
+      />
 
-  <a class="btn" href="https://calendly.com/oxygene-gregory/30min">
-    Réserver une séance
-  </a>
-</header>
+      <div>
+        <h2 className="text-4xl font-bold mb-8">
+          Les bénéfices de la respiration fonctionnelle
+        </h2>
 
-<section>
-  <div class="card">
-    <h2>Respirez mieux. Vivez mieux.</h2>
+        <div className="space-y-6">
+          {[
+            'Réduction du stress et de la fatigue',
+            'Amélioration du sommeil',
+            'Meilleure concentration',
+            'Optimisation des performances physiques',
+            'Augmentation de l’énergie au quotidien',
+          ].map((item, idx) => (
+            <div key={idx} className="flex items-start gap-4">
+              <div className="w-3 h-3 rounded-full bg-sky-500 mt-2"></div>
+              <p className="text-lg text-gray-700">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <p>
-      Accompagnement professionnel en respiration fonctionnelle
-      pour améliorer le sommeil, réduire le stress
-      et optimiser les performances physiques et mentales.
-    </p>
-  </div>
+  {/* Booking */}
+  <section
+    id="reservation"
+    className="bg-sky-600 text-white py-24 px-6"
+  >
+    <div className="max-w-4xl mx-auto text-center">
+      <h2 className="text-4xl font-bold mb-6">
+        Prenez votre souffle. Prenez rendez-vous.
+      </h2>
 
-  <div class="card">
-    <h2>Votre première séance</h2>
+      <p className="text-lg text-sky-100 mb-10 leading-relaxed">
+        Première séance 1h30 — acompte 15€. Paiement libre et conscient à la fin de la séance.
+      </p>
 
-    <p>
-      1h30 d'accompagnement personnalisé.<br><br>
-      Acompte : 15€<br>
-      Paiement libre et conscient à la fin de la séance.
-    </p>
-  </div>
-</section>
+      <div className="bg-white rounded-3xl p-8 text-gray-900 shadow-2xl text-left">
+        <form className="grid md:grid-cols-2 gap-6">
+          <div>
+            <label className="block font-medium mb-2">Nom</label>
+            <input
+              type="text"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3"
+              placeholder="Votre nom"
+            />
+          </div>
 
-</body>
-</html>
+          <div>
+            <label className="block font-medium mb-2">Email</label>
+            <input
+              type="email"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3"
+              placeholder="Votre email"
+            />
+          </div>
+
+          <div>
+            <label className="block font-medium mb-2">Téléphone</label>
+            <input
+              type="tel"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3"
+              placeholder="Votre téléphone"
+            />
+          </div>
+
+          <div>
+            <label className="block font-medium mb-2">Type de séance</label>
+            <select className="w-full border border-gray-300 rounded-xl px-4 py-3">
+              <option>Consultation initiale</option>
+              <option>Suivi personnalisé</option>
+              <option>Coaching performance</option>
+            </select>
+          </div>
+
+          <div className="md:col-span-2">
+            <label className="block font-medium mb-2">Message</label>
+            <textarea
+              rows="5"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3"
+              placeholder="Décrivez vos objectifs ou besoins"
+            ></textarea>
+          </div>
+
+          <div className="md:col-span-2 text-center">
+            <button
+              type="submit"
+              className="bg-sky-600 hover:bg-sky-700 transition text-white px-8 py-4 rounded-2xl font-semibold shadow-lg"
+            >
+              Confirmer la réservation
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  {/* Testimonials */}
+  <section className="py-24 px-6 bg-gray-50">
+    <div className="max-w-6xl mx-auto">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl font-bold mb-4">Témoignages</h2>
+        <p className="text-lg text-gray-600">
+          Ce que disent les clients.
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-8">
+        {[
+          'Un accompagnement exceptionnel. Mon sommeil s’est nettement amélioré.',
+          'Les exercices respiratoires m’aident énormément dans mon activité sportive.',
+          'Très professionnel et humain. Je recommande vivement.',
+        ].map((quote, idx) => (
+          <div
+            key={idx}
+            className="bg-white p-8 rounded-3xl shadow-sm"
+          >
+            <p className="text-gray-700 leading-relaxed">“{quote}”</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Footer */}
+  <footer className="bg-gray-900 text-gray-300 py-12 px-6">
+    <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-8">
+      <div>
+        <h3 className="text-white text-2xl font-bold mb-3">
+          OXYGÈNE
+        </h3>
+        <p className="max-w-md text-gray-400">
+          Respiration • Posture • Mental • Nutrition
+        </p>
+      </div>
+
+      <div>
+        <h4 className="text-white font-semibold mb-3">Contact</h4>
+        <p>Email : Oxygene.gregory@gmail.com</p>
+        <p>Téléphone : 0663390896</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+) }
