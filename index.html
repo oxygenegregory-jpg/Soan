@@ -18,14 +18,19 @@
       --dark: #081820;
       --text-muted: #8ab0bc;
     }
+
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
     html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Inter', sans-serif;
       background: var(--dark);
       color: var(--white);
       overflow-x: hidden;
     }
+
+    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -55,6 +60,8 @@
       transition: all 0.3s;
     }
     .nav-cta:hover { background: var(--teal-bright); color: var(--dark); }
+
+    /* ── HERO ── */
     #hero {
       min-height: 100vh;
       display: flex; align-items: center; justify-content: center;
@@ -68,7 +75,9 @@
         radial-gradient(ellipse 500px 500px at 70% 50%, rgba(42,184,204,0.08) 0%, transparent 70%),
         radial-gradient(ellipse 300px 300px at 20% 70%, rgba(200,147,58,0.06) 0%, transparent 70%);
     }
-    .hero-lines { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .hero-lines {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
     .hero-lines::before {
       content: '';
       position: absolute; top: 50%; left: 50%;
@@ -148,10 +157,13 @@
       transition: all 0.3s;
     }
     .btn-secondary:hover { border-color: var(--teal-bright); color: var(--teal-bright); }
+
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
     }
+
+    /* ── SECTION BASE ── */
     section { padding: 6rem 2rem; }
     .container { max-width: 1100px; margin: 0 auto; }
     .section-label {
@@ -170,15 +182,26 @@
       background: linear-gradient(to right, var(--gold), var(--teal-bright));
       margin-bottom: 2.5rem;
     }
-    #approche { background: linear-gradient(180deg, var(--dark) 0%, #0a2030 100%); }
-    .approche-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .approche-text p { font-size: 1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.2rem; }
+
+    /* ── APPROCHE SCIENTIFIQUE ── */
+    #approche {
+      background: linear-gradient(180deg, var(--dark) 0%, #0a2030 100%);
+    }
+    .approche-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .approche-text p {
+      font-size: 1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.2rem;
+    }
     .approche-text p strong { color: var(--white); font-weight: 500; }
-    .science-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .science-cards {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
     .science-card {
       background: rgba(42,184,204,0.06);
       border: 1px solid rgba(42,184,204,0.15);
-      border-radius: 4px; padding: 1.5rem; transition: all 0.3s;
+      border-radius: 4px; padding: 1.5rem;
+      transition: all 0.3s;
     }
     .science-card:hover {
       background: rgba(42,184,204,0.1);
@@ -192,6 +215,8 @@
       margin-bottom: 0.5rem;
     }
     .science-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── ACCOMPAGNEMENTS ── */
     #accompagnements { background: #081820; }
     .services-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -201,10 +226,12 @@
       position: relative; overflow: hidden;
       background: linear-gradient(135deg, rgba(13,61,74,0.5), rgba(8,24,32,0.8));
       border: 1px solid rgba(42,184,204,0.12);
-      border-radius: 4px; padding: 2rem; transition: all 0.4s;
+      border-radius: 4px; padding: 2rem;
+      transition: all 0.4s;
     }
     .service-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
       background: linear-gradient(to right, transparent, var(--teal-bright), transparent);
       opacity: 0; transition: opacity 0.3s;
     }
@@ -229,15 +256,24 @@
       font-size: 0.82rem; color: var(--text-muted); padding: 0.3rem 0;
       padding-left: 1.2rem; position: relative;
     }
-    .service-list li::before { content: '→'; position: absolute; left: 0; color: var(--teal-bright); font-size: 0.75rem; }
-    #tarifs { background: linear-gradient(180deg, #081820 0%, #0a2030 100%); }
+    .service-list li::before {
+      content: '→'; position: absolute; left: 0; color: var(--teal-bright); font-size: 0.75rem;
+    }
+
+    /* ── TARIFS ── */
+    #tarifs {
+      background: linear-gradient(180deg, #081820 0%, #0a2030 100%);
+    }
     .tarifs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
     .tarif-card {
       background: rgba(13,61,74,0.3); border: 1px solid rgba(42,184,204,0.15);
       border-radius: 4px; padding: 2.5rem 2rem; text-align: center;
       transition: all 0.3s; position: relative; overflow: hidden;
     }
-    .tarif-card.featured { border-color: var(--teal-bright); background: rgba(42,184,204,0.08); }
+    .tarif-card.featured {
+      border-color: var(--teal-bright);
+      background: rgba(42,184,204,0.08);
+    }
     .tarif-card.featured::after {
       content: 'POPULAIRE';
       position: absolute; top: 1rem; right: -2rem;
@@ -252,10 +288,18 @@
       letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted);
       margin-bottom: 1rem;
     }
-    .tarif-price { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 3.5rem; color: var(--white); line-height: 1; }
+    .tarif-price {
+      font-family: 'Rajdhani', sans-serif; font-weight: 700;
+      font-size: 3.5rem; color: var(--white); line-height: 1;
+    }
     .tarif-price span { font-size: 1.5rem; color: var(--teal-bright); }
-    .tarif-label { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--gold); margin: 0.5rem 0 1rem; }
+    .tarif-label {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 1rem; color: var(--gold); margin: 0.5rem 0 1rem;
+    }
     .tarif-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ── BREATHWORK ── */
     #breathwork {
       background: linear-gradient(135deg, #0a2030 0%, #0d3d4a 50%, #081820 100%);
       position: relative; overflow: hidden;
@@ -267,7 +311,9 @@
       background: radial-gradient(ellipse, rgba(42,184,204,0.07) 0%, transparent 70%);
       border-radius: 50%; pointer-events: none;
     }
-    .breathwork-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .breathwork-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+    }
     .breathwork-info .price-highlight {
       display: inline-flex; align-items: baseline; gap: 0.4rem;
       background: rgba(42,184,204,0.1); border: 1px solid rgba(42,184,204,0.25);
@@ -283,6 +329,8 @@
     }
     .benefit-item .emoji { font-size: 1.2rem; margin-bottom: 0.4rem; }
     .benefit-item p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; }
+
+    /* ── ENTREPRISE ── */
     #entreprise { background: #081820; }
     .entreprise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
     .entreprise-block {
@@ -300,12 +348,20 @@
       padding-left: 1rem; position: relative;
     }
     .entreprise-block li::before { content: '▸'; position: absolute; left: 0; color: var(--gold); }
-    #gregory { background: linear-gradient(180deg, #081820 0%, var(--dark) 100%); }
+
+    /* ── GREG ── */
+    #gregory {
+      background: linear-gradient(180deg, #081820 0%, var(--dark) 100%);
+    }
     .greg-inner { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: center; }
+    .greg-visual {
+      position: relative;
+    }
     .greg-photo-frame {
       border: 1px solid rgba(42,184,204,0.25);
       border-radius: 4px; padding: 1.5rem;
-      background: rgba(13,61,74,0.3); text-align: center;
+      background: rgba(13,61,74,0.3);
+      text-align: center;
     }
     .greg-initials {
       width: 120px; height: 120px; border-radius: 50%;
@@ -314,22 +370,39 @@
       font-family: 'Rajdhani', sans-serif; font-size: 2.5rem; font-weight: 700;
       color: var(--teal-bright); border: 2px solid rgba(42,184,204,0.3);
     }
-    .greg-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--white); margin-bottom: 0.3rem; }
-    .greg-role { font-family: 'Rajdhani', sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal-bright); }
+    .greg-name {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600;
+      color: var(--white); margin-bottom: 0.3rem;
+    }
+    .greg-role {
+      font-family: 'Rajdhani', sans-serif; font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal-bright);
+    }
     .cert-badge {
       margin-top: 1.5rem; padding: 1rem;
       background: rgba(200,147,58,0.08); border: 1px solid rgba(200,147,58,0.2);
-      border-radius: 4px; font-size: 0.78rem; color: var(--gold-light); line-height: 1.5; text-align: left;
+      border-radius: 4px; font-size: 0.78rem; color: var(--gold-light); line-height: 1.5;
+      text-align: left;
     }
     .cert-badge strong { display: block; font-family: 'Rajdhani', sans-serif; text-transform: uppercase; margin-bottom: 0.3rem; }
     .greg-bio p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem; }
     .greg-bio p strong { color: var(--white); }
-    .greg-stats { display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
+    .greg-stats {
+      display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;
+    }
     .stat { text-align: center; }
     .stat-num { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 2.5rem; color: var(--teal-bright); }
     .stat-label { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; }
-    #rendez-vous { background: linear-gradient(135deg, #0d3d4a, #081820); text-align: center; }
-    .rdv-subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.3rem; color: var(--text-muted); margin-bottom: 3rem; }
+
+    /* ── RDV / CALENDLY ── */
+    #rendez-vous {
+      background: linear-gradient(135deg, #0d3d4a, #081820);
+      text-align: center;
+    }
+    .rdv-subtitle {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 1.3rem; color: var(--text-muted); margin-bottom: 3rem;
+    }
     .calendly-embed {
       background: rgba(13,61,74,0.3); border: 1px solid rgba(42,184,204,0.2);
       border-radius: 8px; padding: 3rem 2rem; margin-bottom: 3rem;
@@ -340,18 +413,34 @@
       background: rgba(42,184,204,0.06); border: 1px solid rgba(42,184,204,0.15);
       border-radius: 4px; padding: 1.2rem;
     }
-    .contact-item .label { font-family: 'Rajdhani', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
-    .contact-item a, .contact-item p { font-size: 0.88rem; color: var(--white); text-decoration: none; }
+    .contact-item .label {
+      font-family: 'Rajdhani', sans-serif; font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem;
+    }
+    .contact-item a, .contact-item p {
+      font-size: 0.88rem; color: var(--white); text-decoration: none;
+    }
     .contact-item a:hover { color: var(--teal-bright); }
+
+    /* ── FOOTER ── */
     footer {
       background: #040e14;
       border-top: 1px solid rgba(42,184,204,0.1);
       padding: 2.5rem 2rem; text-align: center;
     }
-    .footer-logo { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal-bright); margin-bottom: 0.8rem; }
+    .footer-logo {
+      font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1.2rem;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal-bright);
+      margin-bottom: 0.8rem;
+    }
     .footer-sub { font-family: 'Rajdhani', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
-    .footer-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; color: rgba(42,184,204,0.4); margin: 1rem 0; font-size: 0.95rem; }
+    .footer-tagline {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      color: rgba(42,184,204,0.4); margin: 1rem 0; font-size: 0.95rem;
+    }
     .footer-copy { font-size: 0.72rem; color: rgba(138,176,188,0.4); }
+
+    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links, .nav-cta { display: none; }
@@ -359,12 +448,15 @@
       .science-cards { grid-template-columns: 1fr; }
       .greg-stats { justify-content: center; }
     }
+
+    /* ── SCROLL FADE ── */
     .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">Oxygène <span>SP</span></a>
   <ul class="nav-links">
@@ -377,6 +469,7 @@
   <a href="#rendez-vous" class="nav-cta">Réserver</a>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-lines"></div>
@@ -400,6 +493,7 @@
   </div>
 </section>
 
+<!-- APPROCHE SCIENTIFIQUE -->
 <section id="approche">
   <div class="container">
     <div class="approche-grid fade-in">
@@ -437,6 +531,7 @@
   </div>
 </section>
 
+<!-- ACCOMPAGNEMENTS -->
 <section id="accompagnements">
   <div class="container">
     <div class="fade-in">
@@ -495,6 +590,7 @@
   </div>
 </section>
 
+<!-- TARIFS -->
 <section id="tarifs">
   <div class="container">
     <div class="fade-in" style="text-align:center; margin-bottom: 3rem;">
@@ -526,6 +622,7 @@
   </div>
 </section>
 
+<!-- BREATHWORK -->
 <section id="breathwork">
   <div class="container">
     <div class="breathwork-inner fade-in">
@@ -559,6 +656,7 @@
   </div>
 </section>
 
+<!-- ENTREPRISES -->
 <section id="entreprise">
   <div class="container fade-in">
     <div class="section-label">Professionnels</div>
@@ -591,6 +689,7 @@
   </div>
 </section>
 
+<!-- GRÉGORY -->
 <section id="gregory">
   <div class="container">
     <div class="greg-inner fade-in">
@@ -625,7 +724,7 @@
           </div>
           <div class="stat">
             <div class="stat-num">4</div>
-            <div class="stat-label">Piliers</div>
+            <div class="stat-label">Piliers : Resp. Posture Mental Nutrition</div>
           </div>
         </div>
       </div>
@@ -633,20 +732,27 @@
   </div>
 </section>
 
+<!-- RENDEZ-VOUS -->
 <section id="rendez-vous">
   <div class="container fade-in">
     <div class="section-label">Réservation</div>
     <h2 class="section-title">Prenez votre <em>Souffle</em></h2>
     <div class="divider" style="margin: 0 auto 1.5rem;"></div>
     <p class="rdv-subtitle">Prenez rendez-vous. La transformation commence maintenant.</p>
+
+    <!-- ✅ REMPLACE L'URL CI-DESSOUS PAR TON LIEN CALENDLY -->
     <div class="calendly-embed">
       <p>Réservez directement votre séance en ligne :</p>
-      <a href="https://calendly.com/TON-LIEN-ICI" target="_blank" class="btn-primary" style="display:inline-block; margin-bottom:1rem;">
+      <a href="https://calendly.com/TON-LIEN-ICI" target="_blank" class="btn-primary"
+         style="display:inline-block; margin-bottom:1rem;">
         📅 Ouvrir le calendrier de réservation
       </a>
       <br>
-      <small style="color:var(--text-muted); font-size:0.78rem;">← Remplacez le lien Calendly par le vôtre</small>
+      <small style="color:var(--text-muted); font-size:0.78rem;">
+        ← Remplacez le lien par votre URL Calendly personnelle
+      </small>
     </div>
+
     <div class="contact-grid">
       <div class="contact-item">
         <div class="label">📞 Téléphone</div>
@@ -664,6 +770,7 @@
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-logo">Oxygène · Santé et Performance</div>
   <div class="footer-sub">Respiration · Posture · Mental · Nutrition</div>
@@ -672,6 +779,7 @@
 </footer>
 
 <script>
+  // Scroll fade-in
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.15 });
