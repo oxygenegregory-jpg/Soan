@@ -1,789 +1,651 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Oxygène — Santé et Performance | Grégory Bourcier</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --teal-deep: #0d3d4a;
-      --teal-mid:  #1a6a7a;
-      --teal-bright: #2ab8cc;
-      --teal-glow: #5ce0f0;
-      --gold: #c8933a;
-      --gold-light: #e8b455;
-      --white: #f4f8fa;
-      --offwhite: #e8f2f5;
-      --dark: #081820;
-      --text-muted: #8ab0bc;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>OXYGÈNE — Santé & Performance</title>
 
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    html { scroll-behavior: smooth; }
+<style>
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--dark);
-      color: var(--white);
-      overflow-x: hidden;
-    }
+:root{
+--bg:#07131a;
+--bg2:#0d1f29;
+--cyan:#65e7ff;
+--cyan2:#22b7d5;
+--gold:#d9ab63;
+--white:#f4fbff;
+--text:#c8dce4;
+}
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 4rem;
-      background: rgba(8, 24, 32, 0.85);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(42, 184, 204, 0.15);
-    }
-    .nav-logo {
-      font-family: 'Rajdhani', sans-serif;
-      font-weight: 700; font-size: 1.3rem; letter-spacing: 0.15em;
-      color: var(--teal-bright); text-decoration: none; text-transform: uppercase;
-    }
-    .nav-logo span { color: var(--gold); }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      font-family: 'Rajdhani', sans-serif; font-weight: 500; font-size: 0.85rem;
-      letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);
-      text-decoration: none; transition: color 0.3s;
-    }
-    .nav-links a:hover { color: var(--teal-bright); }
-    .nav-cta {
-      font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 0.85rem;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      padding: 0.6rem 1.6rem; border: 1px solid var(--teal-bright);
-      color: var(--teal-bright); text-decoration: none; border-radius: 2px;
-      transition: all 0.3s;
-    }
-    .nav-cta:hover { background: var(--teal-bright); color: var(--dark); }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      position: relative; overflow: hidden;
-      background: radial-gradient(ellipse at 60% 40%, #0d3d4a 0%, #081820 60%);
-      padding-top: 80px;
-    }
-    .hero-bg {
-      position: absolute; inset: 0; pointer-events: none;
-      background:
-        radial-gradient(ellipse 500px 500px at 70% 50%, rgba(42,184,204,0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 300px 300px at 20% 70%, rgba(200,147,58,0.06) 0%, transparent 70%);
-    }
-    .hero-lines {
-      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
-    }
-    .hero-lines::before {
-      content: '';
-      position: absolute; top: 50%; left: 50%;
-      width: 700px; height: 700px;
-      border: 1px solid rgba(42,184,204,0.08);
-      border-radius: 50%; transform: translate(-50%, -50%);
-      animation: pulse-ring 6s ease-in-out infinite;
-    }
-    .hero-lines::after {
-      content: '';
-      position: absolute; top: 50%; left: 50%;
-      width: 500px; height: 500px;
-      border: 1px solid rgba(200,147,58,0.1);
-      border-radius: 50%; transform: translate(-50%, -50%);
-      animation: pulse-ring 6s ease-in-out infinite 1s;
-    }
-    @keyframes pulse-ring {
-      0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
-      50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.04); }
-    }
-    .hero-content {
-      position: relative; z-index: 2;
-      text-align: center; max-width: 800px; padding: 2rem;
-    }
-    .hero-badge {
-      display: inline-block;
-      font-family: 'Rajdhani', sans-serif; font-size: 0.78rem; font-weight: 600;
-      letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold);
-      border: 1px solid rgba(200,147,58,0.4); padding: 0.4rem 1.2rem;
-      border-radius: 2px; margin-bottom: 2rem;
-      animation: fadeUp 1s ease 0.2s both;
-    }
-    .hero-title {
-      font-family: 'Rajdhani', sans-serif; font-weight: 700;
-      font-size: clamp(3.5rem, 10vw, 7rem); letter-spacing: 0.08em;
-      text-transform: uppercase; line-height: 0.9;
-      color: var(--white);
-      animation: fadeUp 1s ease 0.4s both;
-    }
-    .hero-title span { color: var(--teal-bright); display: block; }
-    .hero-subtitle {
-      font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: var(--text-muted);
-      margin: 1.5rem 0 0.5rem;
-      animation: fadeUp 1s ease 0.6s both;
-    }
-    .hero-tagline-row {
-      display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
-      margin: 1.5rem 0 2.5rem;
-      animation: fadeUp 1s ease 0.8s both;
-    }
-    .hero-pill {
-      font-family: 'Rajdhani', sans-serif; font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal-glow);
-    }
-    .hero-pill::before { content: '• '; color: var(--gold); }
-    .hero-actions {
-      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
-      animation: fadeUp 1s ease 1s both;
-    }
-    .btn-primary {
-      font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.9rem;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      padding: 1rem 2.5rem;
-      background: linear-gradient(135deg, var(--teal-mid), var(--teal-bright));
-      color: var(--dark); text-decoration: none; border-radius: 2px;
-      box-shadow: 0 0 30px rgba(42,184,204,0.3);
-      transition: all 0.3s;
-    }
-    .btn-primary:hover { box-shadow: 0 0 50px rgba(42,184,204,0.6); transform: translateY(-2px); }
-    .btn-secondary {
-      font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 0.9rem;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      padding: 1rem 2.5rem;
-      border: 1px solid rgba(255,255,255,0.2);
-      color: var(--white); text-decoration: none; border-radius: 2px;
-      transition: all 0.3s;
-    }
-    .btn-secondary:hover { border-color: var(--teal-bright); color: var(--teal-bright); }
+html{
+scroll-behavior:smooth;
+}
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+body{
+font-family:'Montserrat',sans-serif;
+background:var(--bg);
+color:white;
+overflow-x:hidden;
+}
 
-    /* ── SECTION BASE ── */
-    section { padding: 6rem 2rem; }
-    .container { max-width: 1100px; margin: 0 auto; }
-    .section-label {
-      font-family: 'Rajdhani', sans-serif; font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold);
-      margin-bottom: 0.8rem;
-    }
-    .section-title {
-      font-family: 'Rajdhani', sans-serif; font-weight: 700;
-      font-size: clamp(2rem, 5vw, 3.2rem); text-transform: uppercase;
-      line-height: 1; color: var(--white); margin-bottom: 1.5rem;
-    }
-    .section-title em { color: var(--teal-bright); font-style: normal; }
-    .divider {
-      width: 60px; height: 2px;
-      background: linear-gradient(to right, var(--gold), var(--teal-bright));
-      margin-bottom: 2.5rem;
-    }
+body::before{
+content:'';
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 20%, rgba(101,231,255,0.08), transparent 25%),
+radial-gradient(circle at 80% 30%, rgba(34,183,213,0.1), transparent 25%),
+radial-gradient(circle at 50% 80%, rgba(217,171,99,0.06), transparent 30%);
+pointer-events:none;
+z-index:-1;
+}
 
-    /* ── APPROCHE SCIENTIFIQUE ── */
-    #approche {
-      background: linear-gradient(180deg, var(--dark) 0%, #0a2030 100%);
-    }
-    .approche-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-    }
-    .approche-text p {
-      font-size: 1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.2rem;
-    }
-    .approche-text p strong { color: var(--white); font-weight: 500; }
-    .science-cards {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-    }
-    .science-card {
-      background: rgba(42,184,204,0.06);
-      border: 1px solid rgba(42,184,204,0.15);
-      border-radius: 4px; padding: 1.5rem;
-      transition: all 0.3s;
-    }
-    .science-card:hover {
-      background: rgba(42,184,204,0.1);
-      border-color: rgba(42,184,204,0.35);
-      transform: translateY(-4px);
-    }
-    .science-card .icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
-    .science-card h4 {
-      font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 0.9rem;
-      letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal-bright);
-      margin-bottom: 0.5rem;
-    }
-    .science-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+/* NAV */
 
-    /* ── ACCOMPAGNEMENTS ── */
-    #accompagnements { background: #081820; }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem; margin-top: 1rem;
-    }
-    .service-card {
-      position: relative; overflow: hidden;
-      background: linear-gradient(135deg, rgba(13,61,74,0.5), rgba(8,24,32,0.8));
-      border: 1px solid rgba(42,184,204,0.12);
-      border-radius: 4px; padding: 2rem;
-      transition: all 0.4s;
-    }
-    .service-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(to right, transparent, var(--teal-bright), transparent);
-      opacity: 0; transition: opacity 0.3s;
-    }
-    .service-card:hover { border-color: rgba(42,184,204,0.3); transform: translateY(-6px); }
-    .service-card:hover::before { opacity: 1; }
-    .service-tag {
-      display: inline-block; font-family: 'Rajdhani', sans-serif;
-      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
-      padding: 0.25rem 0.8rem; border-radius: 2px; margin-bottom: 1rem;
-    }
-    .tag-sante { background: rgba(42,184,204,0.15); color: var(--teal-bright); }
-    .tag-perf  { background: rgba(200,147,58,0.15); color: var(--gold-light); }
-    .tag-collectif { background: rgba(92,224,240,0.1); color: var(--teal-glow); }
-    .service-card h3 {
-      font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1.4rem;
-      letter-spacing: 0.06em; text-transform: uppercase; color: var(--white);
-      margin-bottom: 1rem;
-    }
-    .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
-    .service-list { list-style: none; margin-top: 1rem; }
-    .service-list li {
-      font-size: 0.82rem; color: var(--text-muted); padding: 0.3rem 0;
-      padding-left: 1.2rem; position: relative;
-    }
-    .service-list li::before {
-      content: '→'; position: absolute; left: 0; color: var(--teal-bright); font-size: 0.75rem;
-    }
+nav{
+position:fixed;
+top:0;
+left:0;
+right:0;
+z-index:1000;
+padding:22px 6%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+backdrop-filter:blur(14px);
+background:rgba(4,10,15,0.45);
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
 
-    /* ── TARIFS ── */
-    #tarifs {
-      background: linear-gradient(180deg, #081820 0%, #0a2030 100%);
-    }
-    .tarifs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-    .tarif-card {
-      background: rgba(13,61,74,0.3); border: 1px solid rgba(42,184,204,0.15);
-      border-radius: 4px; padding: 2.5rem 2rem; text-align: center;
-      transition: all 0.3s; position: relative; overflow: hidden;
-    }
-    .tarif-card.featured {
-      border-color: var(--teal-bright);
-      background: rgba(42,184,204,0.08);
-    }
-    .tarif-card.featured::after {
-      content: 'POPULAIRE';
-      position: absolute; top: 1rem; right: -2rem;
-      background: var(--teal-bright); color: var(--dark);
-      font-family: 'Rajdhani', sans-serif; font-size: 0.6rem; font-weight: 700;
-      letter-spacing: 0.15em; padding: 0.3rem 2.5rem;
-      transform: rotate(45deg); transform-origin: center;
-    }
-    .tarif-card:hover { transform: translateY(-6px); }
-    .tarif-card h3 {
-      font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 1rem;
-      letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-    .tarif-price {
-      font-family: 'Rajdhani', sans-serif; font-weight: 700;
-      font-size: 3.5rem; color: var(--white); line-height: 1;
-    }
-    .tarif-price span { font-size: 1.5rem; color: var(--teal-bright); }
-    .tarif-label {
-      font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-size: 1rem; color: var(--gold); margin: 0.5rem 0 1rem;
-    }
-    .tarif-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; }
+.logo{
+font-size:1.5rem;
+font-weight:800;
+letter-spacing:4px;
+color:var(--white);
+text-decoration:none;
+}
 
-    /* ── BREATHWORK ── */
-    #breathwork {
-      background: linear-gradient(135deg, #0a2030 0%, #0d3d4a 50%, #081820 100%);
-      position: relative; overflow: hidden;
-    }
-    #breathwork::before {
-      content: '';
-      position: absolute; top: -200px; right: -200px;
-      width: 600px; height: 600px;
-      background: radial-gradient(ellipse, rgba(42,184,204,0.07) 0%, transparent 70%);
-      border-radius: 50%; pointer-events: none;
-    }
-    .breathwork-inner {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
-    }
-    .breathwork-info .price-highlight {
-      display: inline-flex; align-items: baseline; gap: 0.4rem;
-      background: rgba(42,184,204,0.1); border: 1px solid rgba(42,184,204,0.25);
-      border-radius: 4px; padding: 1rem 1.5rem; margin: 1.5rem 0;
-    }
-    .price-big { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 3rem; color: var(--teal-bright); }
-    .price-detail { font-family: 'Rajdhani', sans-serif; font-size: 0.85rem; color: var(--text-muted); }
-    .breathwork-info p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem; }
-    .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-    .benefit-item {
-      background: rgba(8,24,32,0.6); border: 1px solid rgba(42,184,204,0.1);
-      border-radius: 4px; padding: 0.9rem;
-    }
-    .benefit-item .emoji { font-size: 1.2rem; margin-bottom: 0.4rem; }
-    .benefit-item p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; }
+.logo span{
+color:var(--cyan);
+}
 
-    /* ── ENTREPRISE ── */
-    #entreprise { background: #081820; }
-    .entreprise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-    .entreprise-block {
-      background: rgba(13,61,74,0.2); border-left: 3px solid var(--teal-bright);
-      padding: 2rem; border-radius: 0 4px 4px 0;
-    }
-    .entreprise-block h3 {
-      font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1.2rem;
-      text-transform: uppercase; color: var(--white); margin-bottom: 1rem;
-    }
-    .entreprise-block p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.7; }
-    .entreprise-block ul { list-style: none; margin-top: 0.8rem; }
-    .entreprise-block li {
-      font-size: 0.82rem; color: var(--text-muted); padding: 0.25rem 0;
-      padding-left: 1rem; position: relative;
-    }
-    .entreprise-block li::before { content: '▸'; position: absolute; left: 0; color: var(--gold); }
+nav ul{
+display:flex;
+gap:35px;
+list-style:none;
+}
 
-    /* ── GREG ── */
-    #gregory {
-      background: linear-gradient(180deg, #081820 0%, var(--dark) 100%);
-    }
-    .greg-inner { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: center; }
-    .greg-visual {
-      position: relative;
-    }
-    .greg-photo-frame {
-      border: 1px solid rgba(42,184,204,0.25);
-      border-radius: 4px; padding: 1.5rem;
-      background: rgba(13,61,74,0.3);
-      text-align: center;
-    }
-    .greg-initials {
-      width: 120px; height: 120px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--teal-mid), var(--teal-deep));
-      display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;
-      font-family: 'Rajdhani', sans-serif; font-size: 2.5rem; font-weight: 700;
-      color: var(--teal-bright); border: 2px solid rgba(42,184,204,0.3);
-    }
-    .greg-name {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600;
-      color: var(--white); margin-bottom: 0.3rem;
-    }
-    .greg-role {
-      font-family: 'Rajdhani', sans-serif; font-size: 0.8rem; font-weight: 500;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal-bright);
-    }
-    .cert-badge {
-      margin-top: 1.5rem; padding: 1rem;
-      background: rgba(200,147,58,0.08); border: 1px solid rgba(200,147,58,0.2);
-      border-radius: 4px; font-size: 0.78rem; color: var(--gold-light); line-height: 1.5;
-      text-align: left;
-    }
-    .cert-badge strong { display: block; font-family: 'Rajdhani', sans-serif; text-transform: uppercase; margin-bottom: 0.3rem; }
-    .greg-bio p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem; }
-    .greg-bio p strong { color: var(--white); }
-    .greg-stats {
-      display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;
-    }
-    .stat { text-align: center; }
-    .stat-num { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 2.5rem; color: var(--teal-bright); }
-    .stat-label { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; }
+nav ul a{
+text-decoration:none;
+color:#dceef4;
+font-size:0.9rem;
+font-weight:500;
+transition:0.3s;
+}
 
-    /* ── RDV / CALENDLY ── */
-    #rendez-vous {
-      background: linear-gradient(135deg, #0d3d4a, #081820);
-      text-align: center;
-    }
-    .rdv-subtitle {
-      font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-size: 1.3rem; color: var(--text-muted); margin-bottom: 3rem;
-    }
-    .calendly-embed {
-      background: rgba(13,61,74,0.3); border: 1px solid rgba(42,184,204,0.2);
-      border-radius: 8px; padding: 3rem 2rem; margin-bottom: 3rem;
-    }
-    .calendly-embed p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
-    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; max-width: 700px; margin: 2rem auto 0; }
-    .contact-item {
-      background: rgba(42,184,204,0.06); border: 1px solid rgba(42,184,204,0.15);
-      border-radius: 4px; padding: 1.2rem;
-    }
-    .contact-item .label {
-      font-family: 'Rajdhani', sans-serif; font-size: 0.7rem; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem;
-    }
-    .contact-item a, .contact-item p {
-      font-size: 0.88rem; color: var(--white); text-decoration: none;
-    }
-    .contact-item a:hover { color: var(--teal-bright); }
+nav ul a:hover{
+color:var(--cyan);
+}
 
-    /* ── FOOTER ── */
-    footer {
-      background: #040e14;
-      border-top: 1px solid rgba(42,184,204,0.1);
-      padding: 2.5rem 2rem; text-align: center;
-    }
-    .footer-logo {
-      font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1.2rem;
-      letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal-bright);
-      margin-bottom: 0.8rem;
-    }
-    .footer-sub { font-family: 'Rajdhani', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
-    .footer-tagline {
-      font-family: 'Cormorant Garamond', serif; font-style: italic;
-      color: rgba(42,184,204,0.4); margin: 1rem 0; font-size: 0.95rem;
-    }
-    .footer-copy { font-size: 0.72rem; color: rgba(138,176,188,0.4); }
+.cta{
+padding:12px 24px;
+border-radius:40px;
+background:linear-gradient(135deg,var(--cyan2),var(--cyan));
+color:#001018;
+font-weight:700;
+text-decoration:none;
+box-shadow:0 0 25px rgba(101,231,255,0.3);
+}
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links, .nav-cta { display: none; }
-      .approche-grid, .breathwork-inner, .greg-inner, .entreprise-grid { grid-template-columns: 1fr; }
-      .science-cards { grid-template-columns: 1fr; }
-      .greg-stats { justify-content: center; }
-    }
+/* HERO */
 
-    /* ── SCROLL FADE ── */
-    .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-  </style>
+.hero{
+min-height:100vh;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+inset:0;
+background:
+linear-gradient(rgba(3,8,12,0.6), rgba(3,8,12,0.82)),
+url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000&auto=format&fit=crop');
+background-size:cover;
+background-position:center;
+z-index:-3;
+}
+
+.hero::after{
+content:'';
+position:absolute;
+width:800px;
+height:800px;
+border-radius:50%;
+border:1px solid rgba(101,231,255,0.2);
+box-shadow:
+0 0 80px rgba(101,231,255,0.15),
+inset 0 0 80px rgba(101,231,255,0.08);
+animation:spin 20s linear infinite;
+}
+
+@keyframes spin{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+
+.hero-content{
+max-width:1000px;
+padding:120px 20px 80px;
+text-align:center;
+position:relative;
+z-index:5;
+}
+
+.hero-badge{
+display:inline-block;
+padding:10px 18px;
+border:1px solid rgba(101,231,255,0.3);
+border-radius:30px;
+font-size:0.8rem;
+letter-spacing:2px;
+margin-bottom:30px;
+color:var(--cyan);
+backdrop-filter:blur(10px);
+}
+
+.hero h1{
+font-size:clamp(3rem,8vw,7rem);
+line-height:0.95;
+font-weight:800;
+letter-spacing:4px;
+margin-bottom:20px;
+}
+
+.hero h1 span{
+display:block;
+color:var(--cyan);
+text-shadow:0 0 25px rgba(101,231,255,0.4);
+}
+
+.hero p{
+max-width:760px;
+margin:auto;
+font-size:1.1rem;
+line-height:1.9;
+color:var(--text);
+}
+
+.hero-buttons{
+margin-top:45px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.btn-main{
+padding:18px 36px;
+border-radius:60px;
+background:linear-gradient(135deg,var(--cyan2),var(--cyan));
+text-decoration:none;
+font-weight:700;
+color:#00131a;
+font-size:0.95rem;
+box-shadow:0 0 35px rgba(101,231,255,0.35);
+transition:0.3s;
+}
+
+.btn-main:hover{
+transform:translateY(-3px);
+}
+
+.btn-second{
+padding:18px 36px;
+border-radius:60px;
+border:1px solid rgba(255,255,255,0.15);
+text-decoration:none;
+font-weight:600;
+color:white;
+}
+
+/* SECTION */
+
+section{
+padding:120px 8%;
+position:relative;
+}
+
+.section-top{
+margin-bottom:60px;
+}
+
+.label{
+color:var(--gold);
+letter-spacing:4px;
+font-size:0.8rem;
+margin-bottom:15px;
+font-weight:700;
+text-transform:uppercase;
+}
+
+h2{
+font-size:clamp(2rem,5vw,4rem);
+line-height:1;
+margin-bottom:25px;
+}
+
+h2 span{
+color:var(--cyan);
+}
+
+.section-text{
+max-width:850px;
+line-height:2;
+font-size:1rem;
+color:var(--text);
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:28px;
+margin-top:50px;
+}
+
+.card{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.06);
+backdrop-filter:blur(14px);
+border-radius:28px;
+padding:35px;
+transition:0.4s;
+position:relative;
+overflow:hidden;
+}
+
+.card::before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+right:0;
+height:2px;
+background:linear-gradient(to right, transparent,var(--cyan),transparent);
+}
+
+.card:hover{
+transform:translateY(-8px);
+border-color:rgba(101,231,255,0.3);
+box-shadow:0 0 40px rgba(101,231,255,0.08);
+}
+
+.card h3{
+margin:18px 0;
+font-size:1.3rem;
+}
+
+.card p{
+color:var(--text);
+line-height:1.8;
+font-size:0.92rem;
+}
+
+.icon{
+font-size:2rem;
+}
+
+/* CERTIF */
+
+.certif{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
+
+.certif img{
+width:100%;
+border-radius:24px;
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:0 0 40px rgba(0,0,0,0.5);
+}
+
+.certif-content{
+padding-right:30px;
+}
+
+.certif-content p{
+line-height:2;
+color:var(--text);
+margin-bottom:20px;
+}
+
+/* CONTACT */
+
+.contact{
+text-align:center;
+}
+
+.contact-box{
+margin-top:50px;
+padding:50px;
+border-radius:30px;
+background:linear-gradient(135deg, rgba(101,231,255,0.08), rgba(255,255,255,0.03));
+border:1px solid rgba(101,231,255,0.15);
+}
+
+.contact-box a{
+display:inline-block;
+margin-top:25px;
+}
+
+/* FOOTER */
+
+footer{
+padding:50px 20px;
+text-align:center;
+border-top:1px solid rgba(255,255,255,0.05);
+color:#9db5c0;
+font-size:0.85rem;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+nav ul{
+display:none;
+}
+
+.certif{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:3.5rem;
+}
+
+section{
+padding:90px 7%;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="#hero" class="nav-logo">Oxygène <span>SP</span></a>
-  <ul class="nav-links">
-    <li><a href="#approche">Approche</a></li>
-    <li><a href="#accompagnements">Accompagnements</a></li>
-    <li><a href="#breathwork">Breathwork</a></li>
-    <li><a href="#entreprise">Entreprises</a></li>
-    <li><a href="#gregory">À propos</a></li>
-  </ul>
-  <a href="#rendez-vous" class="nav-cta">Réserver</a>
+<a href="#" class="logo">OXY<span>GÈNE</span></a>
+
+<ul>
+<li><a href="#approche">Approche</a></li>
+<li><a href="#services">Accompagnements</a></li>
+<li><a href="#certification">Certification</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+<a href="https://calendly.com/oxygene-gregory/30min" class="cta" target="_blank">
+Réserver
+</a>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-lines"></div>
-  <div class="hero-content">
-    <div class="hero-badge">Respiration Fonctionnelle · Approche Scientifique &amp; Holistique</div>
-    <h1 class="hero-title">
-      Oxygène
-      <span>Santé &amp; Performance</span>
-    </h1>
-    <p class="hero-subtitle">La respiration change tout.</p>
-    <div class="hero-tagline-row">
-      <span class="hero-pill">Respiration</span>
-      <span class="hero-pill">Posture</span>
-      <span class="hero-pill">Mental</span>
-      <span class="hero-pill">Nutrition</span>
-    </div>
-    <div class="hero-actions">
-      <a href="#rendez-vous" class="btn-primary">Prendre rendez-vous</a>
-      <a href="#approche" class="btn-secondary">Découvrir l'approche</a>
-    </div>
-  </div>
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="hero-badge">
+RESPIRATION FONCTIONNELLE • SCIENCE • HOLISTIQUE
+</div>
+
+<h1>
+OXYGÈNE
+<span>SANTÉ & PERFORMANCE</span>
+</h1>
+
+<p>
+Professionnel en respiration fonctionnelle à travers une approche scientifique et holistique.
+Accompagnement des attaques de panique, troubles anxieux, maladies respiratoires, diabète,
+gestion du stress, performance sportive et transformation globale par la respiration.
+</p>
+
+<div class="hero-buttons">
+<a href="https://calendly.com/oxygene-gregory/30min" class="btn-main" target="_blank">
+Prendre rendez-vous
+</a>
+
+<a href="#approche" class="btn-second">
+Découvrir l'approche
+</a>
+</div>
+
+</div>
+
 </section>
 
-<!-- APPROCHE SCIENTIFIQUE -->
 <section id="approche">
-  <div class="container">
-    <div class="approche-grid fade-in">
-      <div class="approche-text">
-        <div class="section-label">Approche</div>
-        <h2 class="section-title">Science &amp; <em>Holisme</em></h2>
-        <div class="divider"></div>
-        <p>La respiration fonctionnelle est un levier <strong>scientifiquement documenté</strong> pour transformer votre santé. La régulation du CO₂, la biochimie respiratoire, l'équilibre du système nerveux autonome — ce ne sont pas des concepts abstraits, ce sont les mécanismes concrets sur lesquels j'interviens.</p>
-        <p>Mon approche intègre les dernières recherches en physiologie respiratoire à une vision <strong>globale de l'être</strong> : corps, mental, énergie. Chaque séance est personnalisée selon votre bilan respiratoire individuel.</p>
-        <p>Que vous souffriez d'attaques de panique, de maladies respiratoires chroniques, de diabète, ou que vous cherchiez à optimiser vos performances — <strong>la respiration est la clé.</strong></p>
-      </div>
-      <div class="science-cards">
-        <div class="science-card">
-          <div class="icon">🫁</div>
-          <h4>Régulation CO₂</h4>
-          <p>Optimisation des échanges gazeux et de la tolérance au dioxyde de carbone pour un équilibre acido-basique optimal.</p>
-        </div>
-        <div class="science-card">
-          <div class="icon">🧠</div>
-          <h4>Système nerveux</h4>
-          <p>Régulation du système nerveux autonome. Réduction de l'anxiété, des crises de panique et du stress chronique.</p>
-        </div>
-        <div class="science-card">
-          <div class="icon">❤️</div>
-          <h4>Maladies chroniques</h4>
-          <p>Protocoles adaptés aux maladies respiratoires, cardiovasculaires, métaboliques (diabète) et troubles mentaux.</p>
-        </div>
-        <div class="science-card">
-          <div class="icon">⚡</div>
-          <h4>Performance</h4>
-          <p>Optimisation du VO₂max, récupération post-effort, endurance et gestion mentale de la performance sportive.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+
+<div class="section-top">
+<div class="label">APPROCHE</div>
+
+<h2>
+Une respiration <span>scientifique</span><br>
+au service du vivant
+</h2>
+
+<p class="section-text">
+La respiration influence directement le système nerveux, les échanges gazeux,
+la régulation du CO₂, l’énergie cellulaire et les états émotionnels.
+Mon approche associe physiologie respiratoire moderne,
+travail postural, équilibre mental et conscience corporelle.
+
+Chaque accompagnement est pensé comme une transformation complète :
+santé, énergie, récupération, clarté mentale et performance.
+</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<div class="icon">🫁</div>
+<h3>Respiration Fonctionnelle</h3>
+<p>
+Travail sur les mécanismes respiratoires,
+la tolérance au CO₂,
+la respiration nasale et la régulation du système nerveux.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">🧠</div>
+<h3>Santé Mentale</h3>
+<p>
+Accompagnement des attaques de panique,
+du stress chronique,
+de l’anxiété
+et des déséquilibres émotionnels.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">⚡</div>
+<h3>Performance Sportive</h3>
+<p>
+Optimisation du souffle,
+récupération,
+VO₂max,
+gestion mentale et endurance.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">🌿</div>
+<h3>Approche Holistique</h3>
+<p>
+Respiration,
+posture,
+mental,
+nutrition
+et conscience corporelle réunis dans une même approche.
+</p>
+</div>
+
+</div>
+
 </section>
 
-<!-- ACCOMPAGNEMENTS -->
-<section id="accompagnements">
-  <div class="container">
-    <div class="fade-in">
-      <div class="section-label">Mes accompagnements</div>
-      <h2 class="section-title">Ce que je <em>propose</em></h2>
-      <div class="divider"></div>
-    </div>
-    <div class="services-grid">
-      <div class="service-card fade-in">
-        <span class="service-tag tag-sante">Santé</span>
-        <h3>Respiration Fonctionnelle</h3>
-        <p>Apprenez à respirer correctement pour retrouver énergie, clarté mentale et santé physique. Programme personnalisé basé sur votre bilan respiratoire.</p>
-        <ul class="service-list">
-          <li>Attaques de panique &amp; anxiété</li>
-          <li>Maladies respiratoires (asthme, BPCO…)</li>
-          <li>Diabète &amp; maladies métaboliques</li>
-          <li>Troubles du sommeil</li>
-          <li>Douleurs chroniques</li>
-        </ul>
-      </div>
-      <div class="service-card fade-in">
-        <span class="service-tag tag-perf">Performance</span>
-        <h3>Performance Sportive</h3>
-        <p>Optimisez votre souffle, votre récupération et votre mental pour dépasser vos limites. Cours collectifs adaptés à tous niveaux.</p>
-        <ul class="service-list">
-          <li>Optimisation du VO₂max</li>
-          <li>Récupération &amp; régénération</li>
-          <li>Gestion du stress compétitif</li>
-          <li>Posture &amp; alignement corporel</li>
-          <li>Endurance &amp; explosivité</li>
-        </ul>
-      </div>
-      <div class="service-card fade-in">
-        <span class="service-tag tag-sante">Santé</span>
-        <h3>Posture &amp; Alignement</h3>
-        <p>Corrigez les déséquilibres posturaux qui impactent votre respiration et votre qualité de vie au quotidien.</p>
-        <ul class="service-list">
-          <li>Bilan postural individuel</li>
-          <li>Réduction des douleurs chroniques</li>
-          <li>Rééducation respiratoire</li>
-          <li>Exercices correctifs ciblés</li>
-        </ul>
-      </div>
-      <div class="service-card fade-in">
-        <span class="service-tag tag-collectif">Collectif</span>
-        <h3>Cours Collectifs</h3>
-        <p>Séances de groupe alliant respiration fonctionnelle, posture et gestion du stress. Un moment pour se reconnecter à soi, ensemble.</p>
-        <ul class="service-list">
-          <li>Groupes de 10 à 30 personnes</li>
-          <li>Séance 1h30</li>
-          <li>Toutes pathologies bienvenues</li>
-          <li>Programme progressif</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+<section id="services">
+
+<div class="section-top">
+<div class="label">ACCOMPAGNEMENTS</div>
+
+<h2>
+Santé • Performance • <span>Transformation</span>
+</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Cours collectifs</h3>
+<p>
+Cours santé et performance accessibles à tous.
+Travail respiratoire,
+gestion du stress,
+énergie,
+mobilité et posture.
+</p>
+</div>
+
+<div class="card">
+<h3>Entreprises & Séminaires</h3>
+<p>
+Interventions en entreprise,
+séminaires,
+retraites,
+team building,
+prévention burn-out et cohésion.
+</p>
+</div>
+
+<div class="card">
+<h3>Breathwork immersif</h3>
+<p>
+Séances collectives puissantes mêlant respiration,
+libération émotionnelle,
+musique,
+sonothérapie et transformation intérieure.
+</p>
+</div>
+
+<div class="card">
+<h3>Maladies chroniques</h3>
+<p>
+Approche adaptée aux troubles respiratoires,
+fatigue chronique,
+diabète,
+stress chronique et récupération globale.
+</p>
+</div>
+
+</div>
+
 </section>
 
-<!-- TARIFS -->
-<section id="tarifs">
-  <div class="container">
-    <div class="fade-in" style="text-align:center; margin-bottom: 3rem;">
-      <div class="section-label">Tarifs</div>
-      <h2 class="section-title">Transparent &amp; <em>Accessible</em></h2>
-      <div class="divider" style="margin: 0 auto 1rem;"></div>
-      <p style="color: var(--text-muted); font-size:0.9rem; max-width:500px; margin:0 auto;">La confiance, le respect et la liberté sont au cœur de ma pratique.</p>
-    </div>
-    <div class="tarifs-grid fade-in">
-      <div class="tarif-card">
-        <h3>1ère Séance Individuelle</h3>
-        <div class="tarif-price">15<span>€</span></div>
-        <div class="tarif-label">Acompte de réservation</div>
-        <p class="tarif-desc">Séance d'1h30. Le reste du règlement est libre — vous choisissez le montant qui vous semble juste et aligné avec la valeur reçue.</p>
-      </div>
-      <div class="tarif-card featured">
-        <h3>Cours Collectifs</h3>
-        <div class="tarif-price">30<span>€</span></div>
-        <div class="tarif-label">Par personne</div>
-        <p class="tarif-desc">Séance de groupe 1h30. De 10 à 30 personnes. Respiration, énergie, transformation. Un voyage intérieur partagé.</p>
-      </div>
-      <div class="tarif-card">
-        <h3>Entreprises &amp; Séminaires</h3>
-        <div class="tarif-price" style="font-size:2rem; padding-top:0.5rem;">Sur devis</div>
-        <div class="tarif-label">Personnalisé</div>
-        <p class="tarif-desc">Interventions en entreprise, séminaires, retraites, animations communales et campings. Contactez-moi pour un programme adapté.</p>
-      </div>
-    </div>
-  </div>
+<section id="certification">
+
+<div class="certif">
+
+<div class="certif-content">
+
+<div class="label">CERTIFICATION</div>
+
+<h2>
+Une pratique fondée sur
+<span>l’expérience</span>
+</h2>
+
+<p>
+Formation Self-Mastery – Shaolin Temple Europe.
+Un parcours intensif mêlant discipline mentale,
+respiration,
+énergie,
+maîtrise de soi
+et développement intérieur.
+</p>
+
+<p>
+Cette approche nourrit aujourd’hui ma manière d’accompagner :
+rigueur,
+présence,
+écoute,
+transformation profonde et équilibre global.
+</p>
+
+<a href="https://calendly.com/oxygene-gregory/30min" class="btn-main" target="_blank">
+Réserver une séance
+</a>
+
+</div>
+
+<div>
+<img src="https://i.imgur.com/fYt6B8M.jpeg" alt="Certification">
+</div>
+
+</div>
+
 </section>
 
-<!-- BREATHWORK -->
-<section id="breathwork">
-  <div class="container">
-    <div class="breathwork-inner fade-in">
-      <div class="breathwork-info">
-        <div class="section-label">Séances spéciales</div>
-        <h2 class="section-title">Breath<em>work</em></h2>
-        <div class="divider"></div>
-        <p>Une expérience transformatrice au-delà du simple exercice respiratoire. Le breathwork mobilise des couches profondes de l'être — émotionnel, énergétique, physique.</p>
-        <p>En collaboration avec <strong style="color:var(--white)">Géraldine</strong>, praticienne en hypnose et instruments de sonothérapie (diapasons, bols tibétains), chaque séance devient un voyage intérieur unique.</p>
-        <div class="price-highlight">
-          <span class="price-big">30€</span>
-          <span class="price-detail">/ personne · Séance 1h30<br>10 à 30 participants</span>
-        </div>
-        <p style="color: var(--gold); font-size:0.85rem; font-style:italic;">Idéal pour : retraites, séminaires, animations camping, événements communaux</p>
-      </div>
-      <div>
-        <p style="font-family:'Rajdhani',sans-serif; font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem;">Un voyage intérieur pour :</p>
-        <div class="benefits-grid">
-          <div class="benefit-item"><div class="emoji">🌿</div><p>Ventre plat &amp; digestion</p></div>
-          <div class="benefit-item"><div class="emoji">⚡</div><p>Énergie &amp; vitalité</p></div>
-          <div class="benefit-item"><div class="emoji">❤️</div><p>Amour &amp; énergie du cœur</p></div>
-          <div class="benefit-item"><div class="emoji">🌊</div><p>Dissolution de l'ego</p></div>
-          <div class="benefit-item"><div class="emoji">🦁</div><p>Confiance en soi</p></div>
-          <div class="benefit-item"><div class="emoji">🕊️</div><p>Libération des émotions</p></div>
-        </div>
-        <p style="font-family:'Cormorant Garamond',serif; font-style:italic; color:rgba(42,184,204,0.6); margin-top:2rem; font-size:1.1rem; text-align:center;">
-          "La respiration est la clé qui ouvre la porte du changement."
-        </p>
-      </div>
-    </div>
-  </div>
+<section id="contact" class="contact">
+
+<div class="label">CONTACT</div>
+
+<h2>
+Reprendre le contrôle<br>
+de votre <span>souffle</span>
+</h2>
+
+<div class="contact-box">
+
+<p class="section-text" style="margin:auto;">
+La respiration peut transformer profondément votre santé,
+votre énergie,
+votre mental et votre qualité de vie.
+</p>
+
+<a href="https://calendly.com/oxygene-gregory/30min" class="btn-main" target="_blank">
+Réserver maintenant
+</a>
+
+<div style="margin-top:35px; line-height:2; color:var(--text);">
+📞 06 63 39 08 96<br>
+✉️ oxygene.gregory@gmail.com<br>
+📍 Pissotte — Vendée
+</div>
+
+</div>
+
 </section>
 
-<!-- ENTREPRISES -->
-<section id="entreprise">
-  <div class="container fade-in">
-    <div class="section-label">Professionnels</div>
-    <h2 class="section-title">Entreprises &amp; <em>Collectivités</em></h2>
-    <div class="divider"></div>
-    <div class="entreprise-grid">
-      <div class="entreprise-block">
-        <h3>🏢 Entreprises &amp; Séminaires</h3>
-        <p>Intégrez la respiration fonctionnelle dans votre culture d'entreprise. Réduisez l'absentéisme, améliorez la concentration et la résilience de vos équipes.</p>
-        <ul>
-          <li>Ateliers bien-être au travail</li>
-          <li>Gestion du stress &amp; prévention du burn-out</li>
-          <li>Team building respiratoire</li>
-          <li>Interventions sur site ou à distance</li>
-          <li>Format adapté à vos contraintes</li>
-        </ul>
-      </div>
-      <div class="entreprise-block">
-        <h3>🏕️ Retraites &amp; Animations</h3>
-        <p>Des expériences mémorables pour vos participants — campings, retraites spirituelles, animations communales, festivals bien-être.</p>
-        <ul>
-          <li>Sessions breathwork collectives</li>
-          <li>Animations multi-créneaux</li>
-          <li>Combinaison respiration + sonothérapie</li>
-          <li>Retraites de transformation</li>
-          <li>Programmation sur mesure</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GRÉGORY -->
-<section id="gregory">
-  <div class="container">
-    <div class="greg-inner fade-in">
-      <div class="greg-visual">
-        <div class="greg-photo-frame">
-          <div class="greg-initials">GB</div>
-          <div class="greg-name">Grégory Bourcier</div>
-          <div class="greg-role">Thérapeute en Respiration Fonctionnelle</div>
-          <div class="cert-badge">
-            <strong>🏅 Certification officielle</strong>
-            Shaolin Temple Europe<br>
-            Self-Mastery — Programme 12 mois<br>
-            <span style="font-size:0.7rem; color:var(--text-muted)">Certificat N°810734 · 15.02.2025</span>
-          </div>
-        </div>
-      </div>
-      <div class="greg-bio">
-        <div class="section-label">À propos</div>
-        <h2 class="section-title">Une passion,<br><em>une mission</em></h2>
-        <div class="divider"></div>
-        <p>Formé à la <strong>respiration fonctionnelle et au breathwork</strong>, je t'accompagne à travers la puissance de ta respiration. Mon approche allie rigueur scientifique et sensibilité holistique pour des résultats concrets et durables.</p>
-        <p>J'interviens dans des contextes variés : <strong>maladies mentales, attaques de panique</strong>, troubles anxieux, pathologies respiratoires chroniques, maladies métaboliques comme le <strong>diabète</strong>, et bien sûr dans le domaine de la <strong>performance sportive</strong>.</p>
-        <p>Chaque séance est construite sur la conviction que la confiance, le respect et la liberté sont les fondements d'un vrai changement.</p>
-        <div class="greg-stats">
-          <div class="stat">
-            <div class="stat-num">1H30</div>
-            <div class="stat-label">Par séance</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">30</div>
-            <div class="stat-label">Pers. max / groupe</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">4</div>
-            <div class="stat-label">Piliers : Resp. Posture Mental Nutrition</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- RENDEZ-VOUS -->
-<section id="rendez-vous">
-  <div class="container fade-in">
-    <div class="section-label">Réservation</div>
-    <h2 class="section-title">Prenez votre <em>Souffle</em></h2>
-    <div class="divider" style="margin: 0 auto 1.5rem;"></div>
-    <p class="rdv-subtitle">Prenez rendez-vous. La transformation commence maintenant.</p>
-
-    <!-- ✅ REMPLACE L'URL CI-DESSOUS PAR TON LIEN CALENDLY -->
-    <div class="calendly-embed">
-      <p>Réservez directement votre séance en ligne :</p>
-      <a href="https://calendly.com/TON-LIEN-ICI" target="_blank" class="btn-primary"
-         style="display:inline-block; margin-bottom:1rem;">
-        📅 Ouvrir le calendrier de réservation
-      </a>
-      <br>
-      <small style="color:var(--text-muted); font-size:0.78rem;">
-        ← Remplacez le lien par votre URL Calendly personnelle
-      </small>
-    </div>
-
-    <div class="contact-grid">
-      <div class="contact-item">
-        <div class="label">📞 Téléphone</div>
-        <a href="tel:0663390896">06.63.39.08.96</a>
-      </div>
-      <div class="contact-item">
-        <div class="label">✉️ Email</div>
-        <a href="mailto:oxygene.gregory@gmail.com">oxygene.gregory@gmail.com</a>
-      </div>
-      <div class="contact-item">
-        <div class="label">📍 Adresse</div>
-        <p>15 chemin des trois lumas<br>85200 Pissotte</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Oxygène · Santé et Performance</div>
-  <div class="footer-sub">Respiration · Posture · Mental · Nutrition</div>
-  <p class="footer-tagline">"Respire. Libère. Transforme."</p>
-  <p class="footer-copy">© 2026 Grégory Bourcier — Tous droits réservés</p>
+© 2026 OXYGÈNE — Santé & Performance • Grégory Bourcier
 </footer>
 
-<script>
-  // Scroll fade-in
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script>
 </body>
 </html>
