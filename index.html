@@ -101,13 +101,13 @@
     .btn-g:hover{border-color:var(--teal-bright);color:var(--teal-bright);}
     .hero-right{
       position:relative;z-index:2;
-      display:flex;align-items:flex-end;justify-content:center;
+      display:flex;align-items:center;justify-content:center;
       height:100vh;overflow:hidden;
     }
     .hero-photo{
-      height:92%;max-height:820px;width:auto;
+      width:85%;max-width:520px;
       object-fit:contain;
-      filter:drop-shadow(-15px 0 50px rgba(42,184,204,0.2));
+      filter:drop-shadow(0 0 40px rgba(42,184,204,0.2));
       animation:fadeIn 1.2s ease 0.5s both;
     }
 
@@ -198,13 +198,15 @@
 
     /* GREGORY */
     #gregory{background:linear-gradient(180deg,#081820,var(--dark));}
-    .greg-inner{display:grid;grid-template-columns:1fr 1.6fr;gap:3.5rem;align-items:start;}
+    .greg-inner{display:grid;grid-template-columns:1fr 1.6fr;gap:3.5rem;align-items:center;}
+    .greg-img-wrap{display:flex;flex-direction:column;align-items:center;}
     .greg-img-wrap img{
-      width:100%;border-radius:6px;
-      object-fit:contain;
-      filter:drop-shadow(0 20px 55px rgba(42,184,204,0.15));
+      width:85%;max-width:380px;
+      border-radius:50%;
+      object-fit:cover;
+      filter:drop-shadow(0 0 40px rgba(42,184,204,0.2));
     }
-    .greg-caption{margin-top:1.1rem;padding:1.1rem;background:rgba(200,147,58,0.07);border:1px solid rgba(200,147,58,0.18);border-radius:4px;font-size:0.76rem;color:var(--gold-light);line-height:1.55;}
+    .greg-caption{margin-top:1.1rem;padding:1.1rem;background:rgba(200,147,58,0.07);border:1px solid rgba(200,147,58,0.18);border-radius:4px;font-size:0.76rem;color:var(--gold-light);line-height:1.55;width:100%;}
     .greg-caption strong{display:block;font-family:'Rajdhani',sans-serif;text-transform:uppercase;margin-bottom:0.28rem;color:var(--gold);}
     .greg-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:2.1rem;color:var(--white);}
     .greg-role{font-family:'Rajdhani',sans-serif;font-size:0.76rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--teal-bright);margin-bottom:1.8rem;display:block;margin-top:0.3rem;}
@@ -239,7 +241,8 @@
       .hero-left{padding:2.5rem 1.5rem;text-align:center;}
       .hero-pills{justify-content:center;}
       .hero-btns{justify-content:center;}
-      .hero-right{height:60vw;min-height:280px;}
+      .hero-right{height:auto;padding:2rem 1.5rem;}
+      .hero-photo{width:70%;max-width:320px;}
       .approche-grid,.bw-inner,.greg-inner,.ent-grid{grid-template-columns:1fr;}
       .sci-cards{grid-template-columns:1fr 1fr;}
     }
@@ -253,7 +256,7 @@
 
 <nav>
   <a href="#hero" class="nav-logo">
-    <img src="file_000000009c4872468ddfa590b83cf17e~2.png" alt="Oxygène"/>
+    <img src="file_00000000e61471f4acd68e1109317a1b.png" alt="Oxygène"/>
   </a>
   <ul class="nav-links">
     <li><a href="#approche">Approche</a></li>
@@ -289,7 +292,7 @@
     </div>
   </div>
   <div class="hero-right">
-    <img src="photo_nobg.png" class="hero-photo" alt="Grégory Bourcier"/>
+    <img src="file_00000000e61471f4acd68e1109317a1b.png" class="hero-photo" alt="Grégory Bourcier"/>
   </div>
 </section>
 
@@ -374,7 +377,7 @@
   </div>
 </section>
 
-<!-- 4. FORMATIONS & CERTIFICATIONS -->
+<!-- 4. FORMATIONS -->
 <section id="diplomes">
   <div class="container">
     <div class="fade-in" style="text-align:center;margin-bottom:2.8rem;">
@@ -514,7 +517,7 @@
   <div class="container">
     <div class="greg-inner fade-in">
       <div class="greg-img-wrap">
-        <img src="photo_nobg.png" alt="Grégory Bourcier"/>
+        <img src="file_00000000e61471f4acd68e1109317a1b.png" alt="Grégory Bourcier"/>
         <div class="greg-caption">
           <strong>🏅 Certifications officielles</strong>
           Breathing Academy · Inner Engineering (Sadhguru)<br>
@@ -560,7 +563,7 @@
 </section>
 
 <footer>
-  <img src="file_000000009c4872468ddfa590b83cf17e~2.png" class="ft-logo" alt="Oxygène"/>
+  <img src="file_00000000e61471f4acd68e1109317a1b.png" class="ft-logo" alt="Oxygène"/>
   <div class="ft-sub">Respiration · Posture · Mental · Nutrition</div>
   <p class="ft-tag">"Respire. Libère. Transforme."</p>
   <p class="ft-copy">© 2026 Grégory Bourcier — Tous droits réservés</p>
