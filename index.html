@@ -41,114 +41,47 @@
     /* HERO */
     #hero{
       min-height:100vh;
-      display:grid;grid-template-columns:1fr 1fr;
-      align-items:center;position:relative;overflow:hidden;padding-top:68px;
+      position:relative;
+      overflow:hidden;
+      padding-top:68px;
     }
-    .hero-bg{
-      position:absolute;inset:0;pointer-events:none;
-      background:linear-gradient(160deg,#0d3d4a 0%,#081820 60%);
+    .hero-img-full{
+      width:100%;
+      height:calc(100vh - 68px);
+      object-fit:cover;
+      object-position:center top;
+      display:block;
     }
-    /* Image de fond côté droit — la file cercle en transparence */
-    .hero-bg-img{
+    .hero-overlay{
       position:absolute;
-      right:-5%;top:50%;
-      transform:translateY(-50%);
-      width:58%;max-width:700px;
-      opacity:0.12;
+      bottom:0;left:0;right:0;
+      height:35%;
+      background:linear-gradient(to top,var(--dark) 20%,transparent);
       pointer-events:none;
-      filter:blur(2px) saturate(0.5);
     }
-    .hero-ring{position:absolute;top:50%;left:50%;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;}
-    .ring1{width:800px;height:800px;border:1px solid rgba(42,184,204,0.06);animation:pulse 7s ease-in-out infinite;}
-    .ring2{width:560px;height:560px;border:1px solid rgba(200,147,58,0.08);animation:pulse 7s ease-in-out infinite 1.5s;}
-    @keyframes pulse{
-      0%,100%{opacity:.3;transform:translate(-50%,-50%) scale(1);}
-      50%{opacity:.7;transform:translate(-50%,-50%) scale(1.04);}
+    .hero-btns-float{
+      position:absolute;
+      bottom:2.5rem;left:50%;
+      transform:translateX(-50%);
+      display:flex;gap:1rem;flex-wrap:wrap;
+      justify-content:center;z-index:10;
     }
-
-    .hero-left{position:relative;z-index:2;padding:4rem 3rem 4rem 6rem;animation:fadeUp 1s ease 0.3s both;}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
-    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-
-    .hero-badge{
-      display:inline-block;font-family:'Rajdhani',sans-serif;
-      font-size:0.68rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;
-      color:var(--gold);border:1px solid rgba(200,147,58,0.35);
-      padding:0.3rem 0.9rem;border-radius:2px;margin-bottom:1.8rem;
-    }
-    .hero-title{
-      font-family:'Rajdhani',sans-serif;font-weight:700;
-      font-size:clamp(3rem,7vw,6rem);letter-spacing:0.06em;
-      text-transform:uppercase;line-height:0.9;color:var(--white);
-    }
-    .hero-title span{
-      display:block;color:var(--teal-bright);
-      font-size:clamp(0.9rem,2vw,1.4rem);letter-spacing:0.28em;
-      font-weight:500;margin-top:0.7rem;
-    }
-    .hero-tagline{
-      font-family:'Cormorant Garamond',serif;font-style:italic;
-      font-size:1.15rem;color:var(--muted);margin:1.6rem 0 0.5rem;line-height:1.6;
-    }
-    .hero-pills{display:flex;gap:1rem;flex-wrap:wrap;margin:1.3rem 0 2.3rem;}
-    .pill{font-family:'Rajdhani',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal-glow);}
-    .pill::before{content:"• ";color:var(--gold);}
-    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
     .btn-p{
       font-family:'Rajdhani',sans-serif;font-weight:700;font-size:0.85rem;
       letter-spacing:0.12em;text-transform:uppercase;padding:0.88rem 2.2rem;
       background:linear-gradient(135deg,var(--teal-mid),var(--teal-bright));
       color:var(--dark);text-decoration:none;border-radius:2px;
-      box-shadow:0 0 28px rgba(42,184,204,0.3);transition:all 0.3s;display:inline-block;
+      box-shadow:0 0 28px rgba(42,184,204,0.4);transition:all 0.3s;display:inline-block;
     }
     .btn-p:hover{box-shadow:0 0 50px rgba(42,184,204,0.6);transform:translateY(-2px);}
     .btn-g{
       font-family:'Rajdhani',sans-serif;font-weight:600;font-size:0.85rem;
       letter-spacing:0.12em;text-transform:uppercase;padding:0.88rem 2.2rem;
-      border:1px solid rgba(255,255,255,0.2);color:var(--white);
+      border:1px solid rgba(255,255,255,0.35);color:var(--white);
       text-decoration:none;border-radius:2px;transition:all 0.3s;
+      background:rgba(8,24,32,0.45);backdrop-filter:blur(8px);
     }
     .btn-g:hover{border-color:var(--teal-bright);color:var(--teal-bright);}
-
-    /* Côté droit hero — photo principale */
-    .hero-right{
-      position:relative;z-index:2;
-      display:flex;align-items:flex-end;justify-content:center;
-      height:100vh;overflow:hidden;
-    }
-    .hero-photo-wrap{
-      position:relative;
-      width:100%;height:100%;
-      display:flex;align-items:flex-end;justify-content:center;
-    }
-    /* Cercle lumineux derrière la photo */
-    .hero-glow-ring{
-      position:absolute;
-      bottom:5%;left:50%;transform:translateX(-50%);
-      width:480px;height:480px;border-radius:50%;
-      background:radial-gradient(circle,rgba(42,184,204,0.13) 0%,rgba(42,184,204,0.04) 50%,transparent 75%);
-      border:1px solid rgba(42,184,204,0.2);
-      animation:pulse 6s ease-in-out infinite;
-    }
-    .hero-glow-ring2{
-      position:absolute;
-      bottom:5%;left:50%;transform:translateX(-50%);
-      width:600px;height:600px;border-radius:50%;
-      border:1px solid rgba(200,147,58,0.12);
-      animation:pulse 6s ease-in-out infinite 1s;
-    }
-    .hero-photo{
-      position:relative;z-index:2;
-      height:90%;max-height:800px;width:auto;
-      object-fit:cover;object-position:top center;
-      border-radius:8px 8px 0 0;
-      filter:drop-shadow(-10px 0 40px rgba(42,184,204,0.25)) drop-shadow(0 -10px 40px rgba(42,184,204,0.1));
-      animation:fadeIn 1.2s ease 0.5s both;
-    }
-    .hero-fade{
-      position:absolute;bottom:0;left:0;right:0;height:220px;z-index:3;
-      background:linear-gradient(to top,var(--dark) 30%,transparent);
-    }
 
     /* SECTIONS */
     section{padding:5.5rem 2rem;}
@@ -263,18 +196,12 @@
     @media(max-width:900px){
       nav{padding:0.7rem 1.2rem;}
       .nav-links{display:none;}
-      #hero{grid-template-columns:1fr;}
-      .hero-left{padding:2.5rem 1.5rem;text-align:center;}
-      .hero-pills{justify-content:center;}
-      .hero-btns{justify-content:center;}
-      .hero-right{height:60vw;min-height:280px;}
-      .hero-bg-img{width:90%;opacity:0.08;}
+      .hero-img-full{height:60vh;object-position:center top;}
       .approche-grid,.bw-inner,.greg-inner,.ent-grid{grid-template-columns:1fr;}
       .sci-cards{grid-template-columns:1fr 1fr;}
     }
     @media(max-width:500px){
       .sci-cards,.ben-grid{grid-template-columns:1fr;}
-      .hero-title{font-size:2.8rem;}
     }
   </style>
 </head>
@@ -296,39 +223,15 @@
 
 <!-- 1. HERO -->
 <section id="hero">
-  <div class="hero-bg"></div>
-  <!-- Cercle en fond transparent côté droit -->
-  <img class="hero-bg-img" src="file_00000000274471f482582e286c62a703.png" alt=""/>
-  <div class="hero-ring ring1"></div>
-  <div class="hero-ring ring2"></div>
-
-  <div class="hero-left">
-    <div class="hero-badge">Respiration Fonctionnelle · Scientifique &amp; Holistique</div>
-    <h1 class="hero-title">
-      OXYGÈNE
-      <span>SANTÉ ET PERFORMANCE</span>
-    </h1>
-    <p class="hero-tagline">La respiration change tout.<br>Retrouvez énergie, santé et performance.</p>
-    <div class="hero-pills">
-      <span class="pill">Respiration</span>
-      <span class="pill">Posture</span>
-      <span class="pill">Mental</span>
-      <span class="pill">Nutrition</span>
-    </div>
-    <div class="hero-btns">
-      <a href="#rdv" class="btn-p">📅 Prendre rendez-vous</a>
-      <a href="#approche" class="btn-g">Découvrir l'approche</a>
-    </div>
-  </div>
-
-  <!-- Côté droit : photo principale avec halos lumineux -->
-  <div class="hero-right">
-    <div class="hero-photo-wrap">
-      <div class="hero-glow-ring"></div>
-      <div class="hero-glow-ring2"></div>
-      <img src="file_00000000274471f482582e286c62a703.png" class="hero-photo" alt="Grégory Bourcier"/>
-      <div class="hero-fade"></div>
-    </div>
+  <img
+    src="file_00000000a9207246b42cb7a588212b9d.png"
+    class="hero-img-full"
+    alt="Oxygène Santé et Performance — Grégory Bourcier"
+  />
+  <div class="hero-overlay"></div>
+  <div class="hero-btns-float">
+    <a href="#rdv" class="btn-p">📅 Prendre rendez-vous</a>
+    <a href="#approche" class="btn-g">Découvrir l'approche</a>
   </div>
 </section>
 
