@@ -44,6 +44,7 @@
       position:relative;
       overflow:hidden;
       padding-top:68px;
+      background:var(--dark);
     }
     .hero-img-full{
       width:100%;
@@ -82,6 +83,27 @@
       background:rgba(8,24,32,0.45);backdrop-filter:blur(8px);
     }
     .btn-g:hover{border-color:var(--teal-bright);color:var(--teal-bright);}
+
+    /* PORTRAIT mobile et tablette */
+    @media(orientation:portrait){
+      #hero{min-height:100svh;padding-top:68px;}
+      .hero-img-full{
+        width:100%;
+        height:calc(100svh - 68px);
+        object-fit:contain;
+        object-position:center center;
+        background:#081820;
+      }
+      .hero-btns-float{bottom:1.5rem;}
+    }
+    @media(orientation:portrait) and (max-width:500px){
+      .hero-btns-float{
+        flex-direction:column;
+        align-items:center;
+        gap:0.7rem;
+        bottom:1.2rem;
+      }
+    }
 
     /* SECTIONS */
     section{padding:5.5rem 2rem;}
@@ -196,7 +218,6 @@
     @media(max-width:900px){
       nav{padding:0.7rem 1.2rem;}
       .nav-links{display:none;}
-      .hero-img-full{height:60vh;object-position:center top;}
       .approche-grid,.bw-inner,.greg-inner,.ent-grid{grid-template-columns:1fr;}
       .sci-cards{grid-template-columns:1fr 1fr;}
     }
